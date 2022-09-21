@@ -4,7 +4,7 @@
 using namespace std;
 bool isvalidcc(const string&);
 
-int main()a
+int main()
 {
 	//
 	// PLEASE DO NOT CHANGE function main
