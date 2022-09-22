@@ -47,10 +47,12 @@ int main() {
 
 bool isWon(char player, char board[][3]) {
 
+	return false;
 }
 
 bool isDraw(char board[][3]) {
 
+	return false;
 }
 
 void displayBoard(char board[][3]) {
