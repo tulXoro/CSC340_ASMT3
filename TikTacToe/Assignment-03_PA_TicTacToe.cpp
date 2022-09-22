@@ -44,3 +44,27 @@ int main() {
 
 	return 0;
 }
+
+bool isWon(char player, char board[][3]) {
+
+}
+
+bool isDraw(char board[][3]) {
+
+}
+
+void displayBoard(char board[][3]) {
+	cout << "   |   |   ";
+	cout << " " << board[0][0] << " | " << board[0][1] << " | " << board[0][2] << " | ";
+	cout << "___|___|___";
+	cout << "   |   |   ";
+
+	cout << "___|___|___";
+	cout << "   |   |   ";
+
+	cout << "   |   |   ";
+}
+
+void makeAMove(char board[][3], char player) {
+
+}
