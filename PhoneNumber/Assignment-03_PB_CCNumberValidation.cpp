@@ -32,3 +32,9 @@ int main()
 
 	return 0;
 }
+
+bool isvalidcc(const string& number) {
+	
+	
+	return false;
+}
