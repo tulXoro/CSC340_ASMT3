@@ -34,7 +34,8 @@ int main()
 }
 
 bool isvalidcc(const string& number) {
+	if (number.length() < 13 || number.length() > 16)
+		return false;
 	
-	
-	return false;
+	return true;
 }
