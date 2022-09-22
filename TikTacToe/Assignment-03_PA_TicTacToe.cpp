@@ -60,10 +60,10 @@ void displayBoard(char board[][3]) {
 	cout << " " << board[0][0] << " | " << board[0][1] << " | " << board[0][2] << " | ";
 	cout << "___|___|___";
 	cout << "   |   |   ";
-
+	cout << " " << board[0][4] << " | " << board[0][5] << " | " << board[0][6] << " | ";
 	cout << "___|___|___";
 	cout << "   |   |   ";
-
+	cout << " " << board[0][7] << " | " << board[0][8] << " | " << board[0][9] << " | ";
 	cout << "   |   |   ";
 }
 
