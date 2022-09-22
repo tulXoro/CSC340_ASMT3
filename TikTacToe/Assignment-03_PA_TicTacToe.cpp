@@ -72,5 +72,11 @@ void makeAMove(char board[][3], char player) {
 	cout << "Enter a column (0, 1, 2) for player " << player << ": ";
 	int column;
 	cin >> column;
-	board[row][column] = player;
+	
+	if (board[row][column]!=' ') {
+		cout << "This cell is already occupied. Please try again." << endl;
+		makeAMove(board, player);
+	} else {
+		board[row][column] = player;
+	}
 }
