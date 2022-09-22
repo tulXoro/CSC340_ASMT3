@@ -68,5 +68,11 @@ void displayBoard(char board[][3]) {
 }
 
 void makeAMove(char board[][3], char player) {
-
+	cout << "Enter a row (0, 1, 2) for player " << player << ": ";
+	int row;
+	cin >> row;
+	cout << "Enter a column (0, 1, 2) for player " << player << ": ";
+	int column;
+	cin >> column;
+	board[row][column] = player;
 }
