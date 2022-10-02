@@ -44,3 +44,70 @@ int main() {
 
 	return 0;
 }
+
+bool isWon(char player, char board[][3]) {
+
+	if (board[0][0] == player && board[0][1] == player && board[0][2] == player) {
+		return true;
+	}
+	else if (board[1][0] == player && board[1][1] == player && board[1][2] == player) {
+		return true;
+	}
+	else if (board[2][0] == player && board[2][1] == player && board[2][2] == player) {
+		return true;
+	}
+	else if (board[0][0] == player && board[1][0] == player && board[2][0] == player) {
+		return true;
+	}
+	else if (board[0][1] == player && board[1][1] == player && board[2][1] == player) {
+		return true;
+	}
+	else if (board[0][2] == player && board[1][2] == player && board[2][2] == player) {
+		return true;
+	}
+	else if (board[0][0] == player && board[1][1] == player && board[2][2] == player) {
+		return true;
+	}
+	else if (board[0][2] == player && board[1][1] == player && board[2][0] == player) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}
+
+bool isDraw(char board[][3]) {
+
+	if (board[0][0] != ' ' && board[0][1] != ' ' && board[0][2] != ' ' && board[1][0] != ' ' && board[1][1] != ' ' && board[1][2] != ' ' && board[2][0] != ' ' && board[2][1] != ' ' && board[2][2] != ' ') {
+		return true;
+	}
+	else {
+		return false;
+	}
+}
+
+void displayBoard(char board[][3]) {
+	cout << "-------------" << endl;
+	cout << "| " << board[0][0] << " | " << board[0][1] << " | " << board[0][2] << " |" << endl;
+	cout << "-------------" << endl;
+	cout << "| " << board[1][0] << " | " << board[1][1] << " | " << board[1][2] << " |" << endl;
+	cout << "-------------" << endl;
+	cout << "| " << board[2][0] << " | " << board[2][1] << " | " << board[2][2] << " |" << endl;
+	cout << "-------------" << endl;
+}
+
+void makeAMove(char board[][3], char player) {
+	cout << "Enter a row (0, 1, 2) for player " << player << ": ";
+	int row;
+	cin >> row;
+	cout << "Enter a column (0, 1, 2) for player " << player << ": ";
+	int column;
+	cin >> column;
+	
+	if (board[row][column]!=' ') {
+		cout << "This cell is already occupied. Please try again." << endl;
+		makeAMove(board, player);
+	} else {
+		board[row][column] = player;
+	}
+}
