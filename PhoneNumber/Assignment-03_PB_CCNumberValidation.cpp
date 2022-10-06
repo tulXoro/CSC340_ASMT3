@@ -3,7 +3,11 @@
 #include <iomanip>
 #include <iostream>
 using namespace std;
+
 bool isvalidcc(const string&);
+
+int get_part_a(const string&);
+int get_part_b(const string&);
 
 int main()
 {
@@ -34,8 +38,55 @@ int main()
 }
 
 bool isvalidcc(const string& number) {
+
+	//start of length of credit card number
 	if (number.length() < 13 || number.length() > 16)
 		return false;
-	
-	return true;
+
+	int sum = get_part_a(number) + get_part_b(number);
+	cout << "sum: " << sum << endl;
+	return (sum % 10 == 0);
+}
+
+int get_part_a(const string& cc) {
+	// double every number from right to left
+	int sum = 0;
+	string::const_reverse_iterator itr = cc.rbegin();
+	itr++;
+
+	while (itr != cc.rend()) {
+		int digit = (*itr - '0') * 2;
+
+		if(digit<10) {
+			sum += digit;
+		} else {
+			int first = digit / 10;
+			int second = digit% 10;
+			sum += first + second;
+		}
+
+		if (itr + 1 != cc.rend())
+			itr += 2;
+		else
+			break;
+		
+	}
+	return sum;
+}
+
+int get_part_b(const string& cc) {
+	// add all odd indices from right to left
+	int sum = 0;
+	string::const_reverse_iterator itr = cc.rbegin();
+
+	while (itr != cc.rend()) {
+		// convert char to int
+		sum += (*itr - '0');
+		++itr;
+		if (itr != cc.rend()) {
+			++itr;
+		}
+	}
+
+	return sum;
 }

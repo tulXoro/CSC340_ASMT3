@@ -140,9 +140,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Driver.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="Data.CS.SFSU.txt" />
+    <ClCompile Include="Engine.cpp" />
+    <ClCompile Include="Query.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
