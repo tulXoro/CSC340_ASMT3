@@ -6,25 +6,23 @@
 #include <vector>
 #include <sstream>
 #include <memory>
+#include <unordered_map>
 
 using namespace std;
 
 multimap<string, string> read_file(string&, unsigned int&);
-void queryInput(const multimap<string,string>&, const vector<string>&, unsigned int&);
+void query_input(const multimap<string,string>&, const vector<string>&, unsigned int&);
 
-void callHelp();
+void call_help();
 
 int main() {
 
 	// C:/Users/MickeyMouse/AbsolutePath/DB/Data.CS.SFSU.txt
-	unique_ptr<string> fileName(new string("Data.CS.SFSU.txt"));
+	string fileName = "Data.CS.SFSU.txt";
 
 	unsigned int count = 0;
 
-	multimap <string, string> dictionary = read_file(*fileName, count);
-
-	fileName.reset();
-	fileName = nullptr;
+	const multimap <string, string> dictionary = read_file(fileName, count);
 
 	cout << "====== DICTIONARY 340 C++ ======" << endl;
 	cout << "------ Keywords: " << count << " ------" << endl;
@@ -47,7 +45,7 @@ int main() {
 			istream_iterator<string>());
 
 		// handle input
-		queryInput(dictionary, args, count);
+		query_input(dictionary, args, count);
 		
 
 
@@ -125,21 +123,32 @@ multimap<string, string> read_file(string& input, unsigned int& count) {
 	return dictionary;
 }
 
-void queryInput(const multimap<string, string>& dictionary, const vector<string>& args, unsigned int& count) {
+void query_input(const multimap<string, string>& dictionary, const vector<string>& args, unsigned int& count) {
 
 	// Control functions
 	if (args.empty()) {
-		callHelp();
+		call_help();
 		return;
 	}
 	if(args.at(0) == "!q") {
 		count = 0;
 		return;
 	}
-	if (args.at(0) == "!help") {
-		callHelp();
+	if (args.at(0) == "!help" || args.at(0) == "!h" || args.size() > 3) {
+		call_help();
 		return;
 	}
+
+
+	// handle args
+
+	// check if string "reverse" is in args vector and if so, reverse the order of the output
+	
+	if (find(args.begin(), args.end(), "reverse") != args.end()) {
+		// reverse the order of the output
+
+	}
+
 
 	auto itr = dictionary.find(args.at(0));
 
@@ -147,7 +156,7 @@ void queryInput(const multimap<string, string>& dictionary, const vector<string>
 		cout << "\t|" << endl;
 		cout << "\t <NOT FOUND> To be considered for the next release. Thank you." << endl;
 		cout << "\t|" << endl;
-		callHelp();
+		call_help();
 		return;
 	}
 
@@ -159,10 +168,11 @@ void queryInput(const multimap<string, string>& dictionary, const vector<string>
 		}
 	}
 	cout << "\t|" << endl;
-	
+
+
 }
 
-void callHelp() {
+void call_help() {
 	cout << "\t|" << endl;
 	cout << "\t PARAMETER HOW-TO, please enter:" << endl;
 	cout << "\t 1. A search key -then 2. An optional part of speech -then" << endl;
