@@ -230,12 +230,10 @@ void query_input(const multimap<string, string>& dictionary, const vector<string
 			{
 				// if part of speech matches, add to dictionaryClone
 				dictionaryClone.emplace(itr->first, itr->second);
+				
 			}
-			else if (distinct)
-			{
-				dictionaryClone.emplace(itr->first, itr->second);
-				duplicates.emplace(itr->second, true);
-			}
+
+			if (distinct) duplicates.emplace(itr->second, true);
 		}
 	}
 	// at the end, we can just output the result
