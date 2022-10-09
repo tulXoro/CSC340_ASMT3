@@ -226,7 +226,8 @@ void query_input(const multimap<string, string>& dictionary, const vector<string
 			istringstream iss{itr->second};
 			string partOfSpeech;
 			iss >> partOfSpeech;
-			if (!pos || (pos && partOfSpeech == args.at(1)))
+			// if pos is not enabled or if part of speech equals the given arg
+			if (!pos || partOfSpeech == args.at(1))
 			{
 				// if part of speech matches, add to dictionaryClone
 				dictionaryClone.emplace(itr->first, itr->second);
